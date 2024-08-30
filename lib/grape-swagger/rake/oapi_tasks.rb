@@ -84,8 +84,10 @@ module GrapeSwagger
       #
       # rubocop:disable Style/StringConcatenation
       def make_request(url)
+        puts url.inspect
         get url
 
+        puts last_response.inspect
         @oapi = JSON.pretty_generate(
           JSON.parse(last_response.body, symolize_names: true)
         ) + "\n"
